@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var expressSession = require('express-session');
 var validator = require('express-validator');
+var mongoStore = require('connect-mongo')(expressSession);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -32,13 +33,27 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(expressSession({secret: 'hassam'}));
+app.use(expressSession({
+    secret: 'hassam',
+    resave: false,
+    saveUninitialized: false,
+    store: new mongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 180 * 60 * 1000 }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Middleware to check if the request iss authenticated
+app.use(function(req, res, next){
+    res.locals.login = req.isAuthenticated();
+    res.locals.session = req.session;
+    next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
