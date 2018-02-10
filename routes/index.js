@@ -49,4 +49,12 @@ router.get('/shopping-cart', function(req, res){
     res.render('shop/shopping-cart', {products: cart.generateArray(), totalQty: cart.totalQty, totalPrice: cart.totalPrice});
     
 });
+
+router.get('/cart-checkout', function(req, res){
+    if(!req.session.cart){
+        return res.redirect('/shopping-cart');
+    }
+    var cart = new Cart(req.session.cart);
+    res.render('shop/checkout',{});    
+});
 module.exports = router;

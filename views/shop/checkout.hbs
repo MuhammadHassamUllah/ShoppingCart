@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+        <h1>Checkout</h1>
+        <h3>Total Price : $</h3>
+        <form action="/cart-checkout" method="post" id="checkout-form">
+            <div class="row">
+                <div class="col-xs-12">
+                     <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Name" id="name">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" placeholder="Enter Address" id="address">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="CardHolderName">Card Holder Name</label>
+                        <input type="text" class="form-control" id="cardHolderName" placeholder="Enter Card Holder Name">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="CreditCardNumber">Credit Card Number</label>
+                        <input type="number" class="form-control" placeholder="Enter Credit Card Number" id="cardNumber">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row">   
+                        <div class="col-xs-6">   
+                            <label for="expMonth">Expiration Month</label>
+                            <input type="text" class="form-control" id="expMonth">
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="expYear">Expiration Year</label>
+                            <input type="text" class="form-control" id="expYear">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="cvc">CVC</label>
+                        <input type="text" class="form-control" id="cvc">
+                    </div>
+                </div>
+                <dov class="col-xs-12">  
+                    <div class="col-md-offset-9">
+                        <button type="submit" class="btn btn-primary" >Buy now</button>
+                    </div>
+                </dov>
+        </form>
+    </div>
+</div>
