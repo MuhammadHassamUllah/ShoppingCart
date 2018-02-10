@@ -35,8 +35,18 @@ router.get('/add-to-cart/:id', function(req, res){
         }
         cart.add(product, productId);
         req.session.cart = cart;
-        console.log(req.session.cart);
+
         res.redirect('/');
     })
+});
+
+router.get('/shopping-cart', function(req, res){
+    if(!req.session.cart){
+        res.render('shop/shopping-cart', {products: null});
+        return;
+    }    
+    var cart = new Cart(req.session.cart);
+    res.render('shop/shopping-cart', {products: cart.generateArray(), totalQty: cart.totalQty, totalPrice: cart.totalPrice});
+    
 });
 module.exports = router;
