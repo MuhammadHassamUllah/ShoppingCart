@@ -40,6 +40,7 @@ router.get('/add-to-cart/:id', function(req, res){
     })
 });
 
+//Customer can add products into the cart functionality
 router.get('/shopping-cart', function(req, res){
     if(!req.session.cart){
         res.render('shop/shopping-cart', {products: null});
@@ -50,6 +51,7 @@ router.get('/shopping-cart', function(req, res){
     
 });
 
+//Customer can checkout from cart functionality
 router.get('/cart-checkout', function(req, res){
     if(!req.session.cart){
         return res.redirect('/shopping-cart');
