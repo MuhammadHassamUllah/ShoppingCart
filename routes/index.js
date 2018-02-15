@@ -7,6 +7,7 @@ var Product = require("../models/product");
 var Cart  = require("../models/cart");
 
 /* GET home page. */
+//Display all the products on home page
 router.get('/', function (req, res) {
     Product.find({}, function(err, prodList){
         if(err){
